@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="2257" started-at="2019-02-15T20:16:14Z" finished-at="2019-02-15T20:16:16Z">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="2257" started-at="2019-02-15T20:16:14Z" finished-at="2019-02-15T20:16:16Z">
+      <class name="cheshire.AppTest">
+        <test-method status="PASS" signature="initBrowser()[pri:0, instance:cheshire.AppTest@34f5090e]" name="initBrowser" is-config="true" duration-ms="1438" started-at="2019-02-15T20:16:14Z" finished-at="2019-02-15T20:16:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initBrowser -->
+        <test-method status="PASS" signature="checkAuthInvalidForm()[pri:0, instance:cheshire.AppTest@34f5090e]" name="checkAuthInvalidForm" duration-ms="379" started-at="2019-02-15T20:16:15Z" finished-at="2019-02-15T20:16:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkAuthInvalidForm -->
+        <test-method status="PASS" signature="checkAuthValidForm()[pri:0, instance:cheshire.AppTest@34f5090e]" name="checkAuthValidForm" duration-ms="426" started-at="2019-02-15T20:16:16Z" finished-at="2019-02-15T20:16:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkAuthValidForm -->
+        <test-method status="PASS" signature="shouldAnswerWithTrue()[pri:0, instance:cheshire.AppTest@34f5090e]" name="shouldAnswerWithTrue" duration-ms="0" started-at="2019-02-15T20:16:16Z" finished-at="2019-02-15T20:16:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldAnswerWithTrue -->
+      </class> <!-- cheshire.AppTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
