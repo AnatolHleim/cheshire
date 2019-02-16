@@ -13,7 +13,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class AppTest 
 {
-    private WebDriver driver;
+    public AppTest(WebDriver webDriver) {
+        this.webDriver = webDriver;
+    }
+
+    private WebDriver webDriver;
 
 
 
@@ -22,10 +26,10 @@ public class AppTest
      */
     @BeforeTest
     public void initBrowser(){
-      driver = new ChromeDriver();
-      driver.get(AuthPage.urlAuthPage);
-      driver.manage().window().maximize();
-      driver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
+      webDriver= new ChromeDriver();
+      webDriver.get(AuthPage.urlAuthPage);
+      webDriver.manage().window().maximize();
+      webDriver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
     }
     @Test(enabled = false)
     public void shouldAnswerWithTrue()
@@ -35,21 +39,21 @@ public class AppTest
     @Test(priority = 1)
     public void checkAuthValidForm()
     {
-      driver.findElement(By.xpath(new AuthPage().getXpathUserInput())).sendKeys("admin");
-      driver.findElement(By.xpath(new AuthPage().getXpathUserPassword())).sendKeys("123698745");
-      driver.findElement(By.xpath(new AuthPage().getXpathSubmit())).click();
-      Assert.assertTrue( driver.getCurrentUrl().equals("http://31.130.206.73:3210/app") );
-      driver.quit();
+      webDriver.findElement(new AuthPage(webDriver).getXpathUserInput()).sendKeys("admin");
+      webDriver.findElement(new AuthPage(webDriver).getXpathUserPassword()).sendKeys("123698745");
+      webDriver.findElement(new AuthPage(webDriver).getXpathSubmit()).click();
+      Assert.assertTrue( webDriver.getCurrentUrl().equals("http://31.130.206.73:3210/app") );
+      webDriver.quit();
     }
   @Test(priority = 2)
   public void checkAuthInvalidForm()
   {
     initBrowser();
-    driver.findElement(By.xpath(new AuthPage().getXpathUserInput())).sendKeys("admin");
-    driver.findElement(By.xpath(new AuthPage().getXpathUserPassword())).sendKeys("333");
-    driver.findElement(By.xpath(new AuthPage().getXpathSubmit())).click();
-    Assert.assertFalse( driver.getCurrentUrl().equals("http://31.130.206.73:3210/app") );
-    driver.quit();
+    webDriver.findElement(new AuthPage(webDriver).getXpathUserInput()).sendKeys("admin");
+    webDriver.findElement(new AuthPage(webDriver).getXpathUserPassword()).sendKeys("333");
+    webDriver.findElement(new AuthPage(webDriver).getXpathSubmit()).click();
+    Assert.assertFalse( webDriver.getCurrentUrl().equals("http://31.130.206.73:3210/app") );
+    webDriver.quit();
   }
 
 }

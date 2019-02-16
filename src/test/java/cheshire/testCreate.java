@@ -1,9 +1,9 @@
 package cheshire;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -11,24 +11,57 @@ import java.util.concurrent.TimeUnit;
 
 public class testCreate {
   private WebDriver driver;
+  private CreateObjectPage pageCreate = new CreateObjectPage();
+
   @BeforeTest
-  public void initBrowser(){
+  public void initBrowser() {
     driver = new ChromeDriver();
     driver.get(AuthPage.urlAuthPage);
     driver.manage().window().maximize();
-    driver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
   }
+
   @Test()
-  public void checkCreateNewObject() throws InterruptedException {
-    AuthPage authPage = new AuthPage();
-    CreateObjectPage pageCreate = new CreateObjectPage();
-    driver.findElement(By.xpath(authPage.getXpathUserInput())).sendKeys("admin");
-    driver.findElement(By.xpath(authPage.getXpathUserPassword())).sendKeys("123698745");
-    driver.findElement(By.xpath(authPage.getXpathSubmit())).click();
+  public void checkCreateNewObjectWithEmptyInput() {
+    AuthPage authPage = new AuthPage(driver);
+    authPage.autorization();
     driver.get(CreateObjectPage.urlCreateObjectPage);
-    driver.findElement(By.xpath(pageCreate.getXpathSubmit())).click();
-    Assert.assertTrue( driver.findElement(By.xpath(pageCreate.getErrorSubmit())).isDisplayed());
-    Thread.sleep(2000);
+    driver.findElement(pageCreate.getXpathSubmit()).click();
+    Assert.assertTrue(driver.findElement(pageCreate.getErrorSubmit()).isDisplayed());
+  }
+
+  @Test()
+  public void checkCreateNewObjectWithOnlyNameInput() {
+    driver.findElement(pageCreate.getXpathNameProject()).sendKeys("someonename");
+    driver.findElement(pageCreate.getXpathSubmit()).click();
+    Assert.assertTrue(driver.findElement(pageCreate.getErrorSubmit()).isDisplayed());
+  }
+
+  @Test()
+  public void checkCreateNewObjectWithNameAndUrlInput() {
+    new Controller(driver).inputDataField();
+    Assert.assertTrue(driver.findElement(pageCreate.getErrorSubmit()).isDisplayed());
+
+  }
+
+  @Test()
+  public void checkCreateNewObjectWithEmptyInput3() {
+  }
+
+  @Test()
+  public void checkCreateNewObjectWithEmptyInput4() {
+  }
+
+  @Test()
+  public void checkCreateNewObjectWithEmptyInput5() {
+  }
+
+  @Test()
+  public void checkCreateNewObjectWithEmptyInput6() {
+  }
+
+  @AfterTest
+  public void browserClose() {
     driver.quit();
   }
 }
