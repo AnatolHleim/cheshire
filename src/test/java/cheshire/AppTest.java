@@ -39,6 +39,7 @@ public class AppTest
       driver.findElement(By.xpath(new AuthPage().getXpathUserPassword())).sendKeys("123698745");
       driver.findElement(By.xpath(new AuthPage().getXpathSubmit())).click();
       Assert.assertTrue( driver.getCurrentUrl().equals("http://31.130.206.73:3210/app") );
+      driver.quit();
     }
   @Test
   public void checkAuthInvalidForm()
@@ -48,6 +49,7 @@ public class AppTest
     driver.findElement(By.xpath(new AuthPage().getXpathUserPassword())).sendKeys("333");
     driver.findElement(By.xpath(new AuthPage().getXpathSubmit())).click();
     Assert.assertFalse( driver.getCurrentUrl().equals("http://31.130.206.73:3210/app") );
+    driver.quit();
   }
   @Test()
   public void checkCreateNewObject()
@@ -61,5 +63,6 @@ public class AppTest
     driver.get(CreateObjectPage.urlCreateObjectPage);
     driver.findElement(By.xpath(pageCreate.getXpathSubmit())).click();
     Assert.assertTrue( driver.findElement(By.xpath(pageCreate.getErrorSubmit())).isDisplayed());
+    driver.quit();
   }
 }
