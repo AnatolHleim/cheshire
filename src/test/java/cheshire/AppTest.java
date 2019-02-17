@@ -22,7 +22,7 @@ public class AppTest
     {
         Assert.assertTrue( true );
     }
-    @Test()
+    @Test(priority = 1)
     public void checkAuthValidForm()
     {
       webDriver.findElement(new AuthPage(webDriver).getXpathUserInput()).sendKeys("admin");
@@ -31,7 +31,7 @@ public class AppTest
       Assert.assertEquals( webDriver.getCurrentUrl(),"http://31.130.206.73:3210/app" );
       webDriver.quit();
     }
-  @Test()
+  @Test(priority = 2)
   public void checkAuthInvalidForm()
   {
     initBrowser();
