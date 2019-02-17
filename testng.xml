@@ -1,0 +1,8 @@
+<suite name="TestSuite">
+    <test name="AutoQA">
+        <classes>
+            <class name="cheshire.AppTest" />
+            <class name="cheshire.testCreate" />
+        </classes>
+    </test>
+</suite>
